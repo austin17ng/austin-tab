@@ -75,6 +75,8 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
     internal var textFontActive: Int? = null
     internal var textFontInactive: Int? = null
     internal var textSize: Float? = null
+    internal var badgeTextSize: Float? = null
+    internal var badge: Drawable? = null
     internal var onTabItemViewClicked: (tabItemView: TabItemView) -> Unit = {}
 
     internal fun setData(data: List<TabData>) {
@@ -186,11 +188,12 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
                 tabItemView.tvNameFake.typeface = ResourcesCompat.getFont(context, textFontActive!!)
             }
             tabItemView.tvName.text = it.name
-            tabItemView.tvBadge.text = it.badge
-            if (it.badge?.trim().isNullOrEmpty()) {
+            if (it.badge == null) {
                 tabItemView.tvBadge.visibility = GONE
             } else {
+                tabItemView.tvBadge.text = it.badge
                 tabItemView.tvBadge.visibility = VISIBLE
+                tabItemView.tvBadge.background = badge
             }
             tabItemView.layoutParams = when (tabStyle) {
                 TabStyle.ADAPTIVE -> {
@@ -211,6 +214,9 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
             if (textSize != null) {
                 tabItemView.tvNameFake.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize!!)
                 tabItemView.tvName.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize!!)
+            }
+            if (badgeTextSize != null) {
+                tabItemView.tvBadge.setTextSize(TypedValue.COMPLEX_UNIT_PX, badgeTextSize!!)
             }
             tabItemView.setPadding(tabPadding)
             tabItemView.setOnClickListener {

@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         austinTabView1.setData(
             listOf(
                 TabData("Home"),
-                TabData("Latest Notifications"),
+                TabData("Latest Notifications", "3"),
                 TabData("Profile"),
             )
         )
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         austinTabView2.setData(
             listOf(
                 TabData("Home"),
-                TabData("Latest Notifications"),
+                TabData("Latest Notifications", "3"),
                 TabData("Profile"),
             )
         )

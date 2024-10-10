@@ -93,6 +93,12 @@ class AustinTabView(context: Context, attrs: AttributeSet?) : HorizontalScrollVi
         if (typedArray.hasValue(R.styleable.AustinTabView_tab_text_size)) {
             container.textSize = typedArray.getDimension(R.styleable.AustinTabView_tab_text_size, 0F)
         }
+        if (typedArray.hasValue(R.styleable.AustinTabView_tab_badge_text_size)) {
+            container.badgeTextSize = typedArray.getDimension(R.styleable.AustinTabView_tab_badge_text_size, 0F)
+        }
+        if (typedArray.hasValue(R.styleable.AustinTabView_tab_badge_source)) {
+            container.badge = typedArray.getDrawable(R.styleable.AustinTabView_tab_badge_source)
+        }
 
         typedArray.recycle()
     }
