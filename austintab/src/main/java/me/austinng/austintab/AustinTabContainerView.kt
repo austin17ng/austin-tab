@@ -67,6 +67,7 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
     internal lateinit var tabStyle: TabStyle
     internal lateinit var indicatorStyle: IndicatorStyle
     internal lateinit var indicator: Drawable
+    internal var enableAnimation: Boolean = true
     internal var indicatorHeight: Int = 0
     internal var tabPadding: Int = 0
     internal var textColorActive: Int = 0
@@ -74,6 +75,7 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
     internal var textFontActive: Int? = null
     internal var textFontInactive: Int? = null
     internal var textSize: Float? = null
+    internal var onTabItemViewClicked: (tabItemView: TabItemView) -> Unit = {}
 
     internal fun setData(data: List<TabData>) {
         this.data.clear()
@@ -106,7 +108,7 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
             }
 
             override fun onPageSelected(position: Int) {
-                onTabClicked(position)
+                onTabSelected(position)
                 invalidate()
             }
 
@@ -144,6 +146,14 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun onTabClicked(index: Int) {
+        if (viewPager2 != null) {
+            viewPager2?.currentItem = index
+        } else {
+            onTabSelected(index)
+        }
+    }
+
+    private fun onTabSelected(index: Int) {
         if (index == currentIndex) {
             tabReselectedListener?.invoke(index)
         } else {
@@ -154,15 +164,16 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
         currentIndex = index
         lastIndicatorBounds.copy(getIndicatorBounds(lastIndex))
         currentIndicatorBounds.copy(getIndicatorBounds(currentIndex))
+        onTabItemViewClicked(listTabItemView[index])
         startAnimation()
         invalidate()
     }
 
     private fun startAnimation() {
-        animator.duration = if (viewPager2 === null) {
-            animationDuration
-        } else {
+        animator.duration = if (viewPager2 != null || !enableAnimation) {
             0L
+        } else {
+            animationDuration
         }
         animator.start()
     }
