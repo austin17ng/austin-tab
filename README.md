@@ -1,7 +1,7 @@
 # Austin Tab
 :sheep:  A light weight tab layout for Android :sheep:
 
-![Examples](/images/example.png "Examples")
+![Examples](/images/examples.png "Examples")
 
 ## Examples
 ### A basic example
