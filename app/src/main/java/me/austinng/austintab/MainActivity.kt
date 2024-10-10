@@ -60,11 +60,12 @@ class MainActivity : AppCompatActivity() {
                 TabData("Profile"),
             )
         )
+        austinTabView2.setIndex(1)
 
         austinTabView3.setData(
             listOf(
                 TabData("Home"),
-                TabData("Latest Notifications"),
+                TabData("Search"),
                 TabData("Profile"),
             )
         )
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         austinTabView4.setData(
             listOf(
                 TabData("Home"),
-                TabData("Latest Notifications"),
+                TabData("Search"),
                 TabData("Profile"),
             )
         )

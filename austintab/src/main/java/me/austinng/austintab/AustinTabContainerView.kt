@@ -145,7 +145,7 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
         }
     }
 
-    private fun onTabClicked(index: Int) {
+    internal fun onTabClicked(index: Int) {
         if (viewPager2 != null) {
             viewPager2?.currentItem = index
         } else {

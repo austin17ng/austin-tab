@@ -37,6 +37,16 @@ class AustinTabView(context: Context, attrs: AttributeSet?) : HorizontalScrollVi
         container.attachWithPager2(viewPager2)
     }
 
+    fun getIndex(): Int {
+        return container.currentIndex
+    }
+
+    fun setIndex(index: Int) {
+        container.post {
+            container.onTabClicked(index)
+        }
+    }
+
 
     init {
         inflate(getContext(), R.layout.layout_austin_tab, this)

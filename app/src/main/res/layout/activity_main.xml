@@ -24,6 +24,7 @@
         app:indicator_src="@drawable/shape_indicator_segmented"
         app:indicator_style="SEGMENTED_CONTROL"
         app:offset="16dp"
+        app:enable_animation="false"
         app:tab_container_background="@drawable/shape_tab_background_segmented"
         app:tab_container_padding="4dp"
         app:tab_padding="6dp"
@@ -74,6 +75,7 @@
         app:indicator_src="@drawable/shape_indicator_segmented"
         app:indicator_style="SEGMENTED_CONTROL"
         app:offset="16dp"
+        app:enable_animation="false"
         app:tab_container_background="@drawable/shape_tab_background_segmented"
         app:tab_container_padding="4dp"
         app:tab_padding="6dp"
@@ -114,7 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:text="LONG_SEGMENTED" />
+        android:text="LONG_SEGMENTED (MUST BE USED WITH ADAPTIVE)" />
 
     <me.austinng.austintab.AustinTabView
         android:id="@+id/austinTabView5"
@@ -124,6 +126,7 @@
         app:indicator_src="@drawable/shape_indicator_segmented"
         app:indicator_style="SEGMENTED_CONTROL"
         app:offset="16dp"
+        app:enable_animation="false"
         app:tab_container_background="@drawable/shape_tab_background_segmented"
         app:tab_container_padding="4dp"
         app:tab_padding="6dp"
@@ -138,7 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:text="LONG_TAB" />
+        android:text="LONG_TAB (MUST BE USED WITH ADAPTIVE)" />
 
     <me.austinng.austintab.AustinTabView
         android:id="@+id/austinTabView6"
