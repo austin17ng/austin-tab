@@ -158,4 +158,10 @@
         app:tab_text_font_inactive="@font/ubuntu_regular"
         app:tab_text_size="14sp" />
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

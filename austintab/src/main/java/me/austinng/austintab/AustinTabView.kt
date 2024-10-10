@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import androidx.core.view.setPadding
+import androidx.viewpager2.widget.ViewPager2
 
 class AustinTabView(context: Context, attrs: AttributeSet?) : HorizontalScrollView(context, attrs) {
     private lateinit var container: AustinTabContainerView
@@ -30,6 +31,11 @@ class AustinTabView(context: Context, attrs: AttributeSet?) : HorizontalScrollVi
     fun setTabUnSelectedListener(listener: (index: Int) -> Unit) {
         container.tabUnSelectedListener = listener
     }
+
+    fun attachWithViewPager2(viewPager2: ViewPager2) {
+        container.attachWithPager2(viewPager2)
+    }
+
 
     init {
         inflate(getContext(), R.layout.layout_austin_tab, this)

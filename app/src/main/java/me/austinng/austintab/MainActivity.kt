@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         austinTabView4 = findViewById(R.id.austinTabView4)
         austinTabView5 = findViewById(R.id.austinTabView5)
         austinTabView6 = findViewById(R.id.austinTabView6)
+        viewPager2 = findViewById(R.id.viewPager2)
+        viewPager2.adapter = ViewPagerAdapter(listOf("Page 1", "Page 2", "Page 3", "Page 4", "Page 5", "Page 6", "Page 7", "Page 8", "Page 9", "Page 10"))
 
         austinTabView1.setData(
             listOf(
@@ -104,6 +106,7 @@ class MainActivity : AppCompatActivity() {
                 TabData("Statistics"),
             )
         )
+        austinTabView6.attachWithViewPager2(viewPager2)
     }
 
     companion object {

@@ -14,14 +14,17 @@ import android.widget.LinearLayout
 import android.widget.Space
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.setPadding
+import androidx.viewpager2.widget.ViewPager2
 
 internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
-    internal val data = mutableListOf<TabData>()
-    internal val listTabItemView = mutableListOf<TabItemView>()
-    internal val listSpace = mutableListOf<Space>()
+    private var viewPager2: ViewPager2? = null
+    private val data = mutableListOf<TabData>()
+    private val listTabItemView = mutableListOf<TabItemView>()
+    private val listSpace = mutableListOf<Space>()
     internal var lastIndex: Int = 0
     internal var currentIndex: Int = 0
+    internal var animationDuration = 200L
 
     internal var tabSelectedListener: ((index: Int) -> Unit)? = null
     internal var tabReselectedListener: ((index: Int) -> Unit)? = null
@@ -31,32 +34,35 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
     private val currentIndicatorBounds = IndicatorBounds(0, 0)
     private val actualIndicatorBounds = IndicatorBounds(0, 0)
 
-    private val animator = ValueAnimator.ofObject(IndicatorEvaluator(), lastIndicatorBounds, currentIndicatorBounds).apply {
-        duration  = 200
-        interpolator = LinearInterpolator()
-        addUpdateListener {
-            actualIndicatorBounds.copy(it.animatedValue as IndicatorBounds)
-            invalidate()
-        }
-        addListener(object : AnimatorListener {
-            override fun onAnimationStart(animation: Animator) {
-                updateTabItemView(lastIndex)
+    private val animator =
+        ValueAnimator.ofObject(IndicatorEvaluator(), lastIndicatorBounds, currentIndicatorBounds)
+            .apply {
+                duration = animationDuration
+                interpolator = LinearInterpolator()
+                addUpdateListener {
+                    actualIndicatorBounds.copy(it.animatedValue as IndicatorBounds)
+                    invalidate()
+                }
+                addListener(object : AnimatorListener {
+                    override fun onAnimationStart(animation: Animator) {
+                        updateTabItemView(lastIndex)
+                    }
+
+                    override fun onAnimationEnd(animation: Animator) {
+                        updateTabItemView(currentIndex)
+                        viewPager2?.currentItem = currentIndex
+                    }
+
+                    override fun onAnimationCancel(animation: Animator) {
+
+                    }
+
+                    override fun onAnimationRepeat(animation: Animator) {
+
+                    }
+
+                })
             }
-
-            override fun onAnimationEnd(animation: Animator) {
-               updateTabItemView(currentIndex)
-            }
-
-            override fun onAnimationCancel(animation: Animator) {
-
-            }
-
-            override fun onAnimationRepeat(animation: Animator) {
-
-            }
-
-        })
-    }
 
     internal lateinit var tabStyle: TabStyle
     internal lateinit var indicatorStyle: IndicatorStyle
@@ -69,7 +75,7 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
     internal var textFontInactive: Int? = null
     internal var textSize: Float? = null
 
-    fun setData(data: List<TabData>) {
+    internal fun setData(data: List<TabData>) {
         this.data.clear()
         this.data.addAll(data)
         lastIndex = 0
@@ -88,6 +94,28 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
         }
     }
 
+    internal fun attachWithPager2(viewPager2: ViewPager2) {
+        this.viewPager2 = viewPager2
+        this.viewPager2?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+
+            }
+
+            override fun onPageSelected(position: Int) {
+                onTabClicked(position)
+                invalidate()
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+            }
+
+        })
+    }
+
     init {
         setWillNotDraw(false)
         clipChildren = false
@@ -103,12 +131,14 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
         if (index == currentIndex) {
             listTabItemView[index].tvName.setTextColor(textColorActive)
             if (textFontActive != null) {
-                listTabItemView[index].tvName.typeface = ResourcesCompat.getFont(context, textFontActive!!)
+                listTabItemView[index].tvName.typeface =
+                    ResourcesCompat.getFont(context, textFontActive!!)
             }
         } else {
             listTabItemView[index].tvName.setTextColor(textColorInactive)
             if (textFontInactive != null) {
-                listTabItemView[index].tvName.typeface = ResourcesCompat.getFont(context, textFontInactive!!)
+                listTabItemView[index].tvName.typeface =
+                    ResourcesCompat.getFont(context, textFontInactive!!)
             }
         }
     }
@@ -124,8 +154,17 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
         currentIndex = index
         lastIndicatorBounds.copy(getIndicatorBounds(lastIndex))
         currentIndicatorBounds.copy(getIndicatorBounds(currentIndex))
-        animator.start()
+        startAnimation()
         invalidate()
+    }
+
+    private fun startAnimation() {
+        animator.duration = if (viewPager2 === null) {
+            animationDuration
+        } else {
+            0L
+        }
+        animator.start()
     }
 
     private fun initListTabItemView(data: List<TabData>): List<TabItemView> {
@@ -204,10 +243,21 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
         val verticalPadding = paddingTop
         when (indicatorStyle) {
             IndicatorStyle.TAB -> {
-                indicator.setBounds(actualIndicatorBounds.left, height - indicatorHeight - verticalPadding, actualIndicatorBounds.right, height - verticalPadding)
+                indicator.setBounds(
+                    actualIndicatorBounds.left,
+                    height - indicatorHeight - verticalPadding,
+                    actualIndicatorBounds.right,
+                    height - verticalPadding
+                )
             }
+
             IndicatorStyle.SEGMENTED_CONTROL -> {
-                indicator.setBounds(actualIndicatorBounds.left, verticalPadding, actualIndicatorBounds.right, height - verticalPadding)
+                indicator.setBounds(
+                    actualIndicatorBounds.left,
+                    verticalPadding,
+                    actualIndicatorBounds.right,
+                    height - verticalPadding
+                )
             }
         }
         indicator.draw(canvas)
