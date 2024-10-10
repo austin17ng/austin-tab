@@ -18,6 +18,19 @@ class AustinTabView(context: Context, attrs: AttributeSet?) : HorizontalScrollVi
         container.setData(data)
     }
 
+    fun setTabSelectedListener(listener: (index: Int) -> Unit) {
+        container.tabSelectedListener = listener
+
+    }
+
+    fun setTabReselectedListener(listener: (index: Int) -> Unit) {
+        container.tabReselectedListener = listener
+    }
+
+    fun setTabUnSelectedListener(listener: (index: Int) -> Unit) {
+        container.tabUnSelectedListener = listener
+    }
+
     init {
         inflate(getContext(), R.layout.layout_austin_tab, this)
         findViews()

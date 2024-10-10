@@ -23,6 +23,10 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
     internal var lastIndex: Int = 0
     internal var currentIndex: Int = 0
 
+    internal var tabSelectedListener: ((index: Int) -> Unit)? = null
+    internal var tabReselectedListener: ((index: Int) -> Unit)? = null
+    internal var tabUnSelectedListener: ((index: Int) -> Unit)? = null
+
     private val lastIndicatorBounds = IndicatorBounds(0, 0)
     private val currentIndicatorBounds = IndicatorBounds(0, 0)
     private val actualIndicatorBounds = IndicatorBounds(0, 0)
@@ -110,6 +114,12 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun onTabClicked(index: Int) {
+        if (index == currentIndex) {
+            tabReselectedListener?.invoke(index)
+        } else {
+            tabSelectedListener?.invoke(index)
+            tabUnSelectedListener?.invoke(lastIndex)
+        }
         lastIndex = currentIndex
         currentIndex = index
         lastIndicatorBounds.copy(getIndicatorBounds(lastIndex))

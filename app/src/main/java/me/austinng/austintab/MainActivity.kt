@@ -1,6 +1,7 @@
 package me.austinng.austintab
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -40,6 +41,15 @@ class MainActivity : AppCompatActivity() {
                 TabData("Profile"),
             )
         )
+        austinTabView1.setTabSelectedListener { index ->
+            Log.d(TAG, "Index $index selected")
+        }
+        austinTabView1.setTabReselectedListener { index ->
+            Log.d(TAG, "Index $index reselected")
+        }
+        austinTabView1.setTabUnSelectedListener { index ->
+            Log.d(TAG, "Index $index unselected")
+        }
 
         austinTabView2.setData(
             listOf(
@@ -94,5 +104,9 @@ class MainActivity : AppCompatActivity() {
                 TabData("Statistics"),
             )
         )
+    }
+
+    companion object {
+        const val TAG = "MainActivity"
     }
 }
