@@ -1,7 +1,7 @@
 # Austin Tab
 :sheep:  A light weight tab layout for Android :sheep:
 
-![Examples](/images/examples.png "Examples")
+<img src="/images/examples.png" alt="drawing" width="500"/>
 
 ## Examples
 ### A basic example
@@ -120,3 +120,11 @@ dependencies {
 `getIndex(): Int`
 
 `setIndex(index: Int)`
+
+## Contributing
+
+Feel free to contribute by submitting issues or pull requests. And please ensure that all pull requests are checked out from the `master` branch.
+
+## License
+
+Austin Tab is licensed under the MIT License.
