@@ -4,4 +4,14 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#FF054edb</color>
     <color name="bg">#FFF1F4F6</color>
+    <color name="black_01">#ff030303</color>
+    <color name="black_02">#ff1C1C1C</color>
+    <color name="black_03">#ff353535</color>
+    <color name="black_04">#ff4F4F4F</color>
+    <color name="black_05">#ff686868</color>
+    <color name="black_06">#ff818181</color>
+    <color name="black_07">#ff9A9A9A</color>
+    <color name="black_08">#ffB3B3B3</color>
+    <color name="black_09">#ffcdcdcd</color>
+    <color name="black_10">#ffe6e6e6</color>
 </resources>
