@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
@@ -38,8 +39,8 @@ class MainActivity : AppCompatActivity() {
 
         austinTabView1.setData(
             listOf(
-                TabData("Home"),
-                TabData("Latest Notifications", "3"),
+                TabData("Home", icon = R.drawable.ic_home),
+                TabData("Notifications", badge = "3"),
                 TabData("Profile"),
             )
         )
@@ -55,8 +56,8 @@ class MainActivity : AppCompatActivity() {
 
         austinTabView2.setData(
             listOf(
-                TabData("Home"),
-                TabData("Latest Notifications", "3"),
+                TabData("Home", icon = R.drawable.ic_home),
+                TabData("Notifications", badge = "3"),
                 TabData("Profile"),
             )
         )

@@ -5,6 +5,14 @@
     android:orientation="horizontal"
     tools:parentTag="android.widget.LinearLayout">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgAustinTabIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:visibility="gone"
+        />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -13,6 +21,7 @@
             android:id="@+id/tvAustinTabNameFake"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
             android:gravity="center"
             android:visibility="invisible"
             tools:text="Hello" />
@@ -21,6 +30,7 @@
             android:id="@+id/tvAustinTabName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
             android:gravity="center"
             tools:text="Hello" />
     </RelativeLayout>
@@ -30,7 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:gravity="center"
+        android:layout_gravity="top"
+        android:textSize="10sp"
         tools:text="12" />
 
 </merge>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="austin_tab_black_01">#ff030303</color>
+    <color name="austin_tab_black_02">#ff1C1C1C</color>
+    <color name="austin_tab_black_03">#ff353535</color>
+    <color name="austin_tab_black_04">#ff4F4F4F</color>
+    <color name="austin_tab_black_05">#ff686868</color>
+    <color name="austin_tab_black_06">#ff818181</color>
+    <color name="austin_tab_black_07">#ff9A9A9A</color>
+    <color name="austin_tab_black_08">#ffB3B3B3</color>
+    <color name="austin_tab_black_09">#ffcdcdcd</color>
+    <color name="austin_tab_black_10">#ffe6e6e6</color>
+    <color name="austin_tab_white">#ffffff</color>
+</resources>

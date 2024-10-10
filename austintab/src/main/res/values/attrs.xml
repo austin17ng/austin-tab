@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="AustinTabView">
+        <attr name="offset" format="dimension"/>
+        <attr name="enable_auto_scroll" format="boolean"/>
+        <attr name="enable_animation" format="boolean"/>
         <attr name="tab_container_background" format="reference"/>
         <attr name="tab_container_padding" format="dimension"/>
         <attr name="tab_style" format="enum">
@@ -13,17 +16,24 @@
         </attr>
         <attr name="indicator_src" format="reference"/>
         <attr name="indicator_height" format="dimension"/>
-        <attr name="offset" format="dimension"/>
-        <attr name="enable_auto_scroll" format="boolean"/>
-        <attr name="enable_animation" format="boolean"/>
-        <attr name="tab_padding" format="dimension"/>
+        <attr name="tab_vertical_padding" format="dimension"/>
+        <attr name="tab_horizontal_padding" format="dimension"/>
         <attr name="tab_text_color_active" format="color"/>
         <attr name="tab_text_color_inactive" format="color"/>
         <attr name="tab_text_font_active" format="reference"/>
         <attr name="tab_text_font_inactive" format="reference"/>
         <attr name="tab_text_size" format="dimension"/>
+        <attr name="tab_icon_active_color" format="color"/>
+        <attr name="tab_icon_inactive_color" format="color"/>
         <attr name="tab_badge_text_size" format="dimension"/>
+        <attr name="tab_badge_font" format="reference"/>
         <attr name="tab_badge_source" format="reference"/>
+        <attr name="tab_badge_color" format="color"/>
+        <attr name="tab_badge_position" format="enum">
+            <enum name="TOP" value="0"/>
+            <enum name="CENTER" value="1"/>
+            <enum name="BOTTOM" value="2"/>
+        </attr>
         <attr name="android:textSize"/>
     </declare-styleable>
 </resources>

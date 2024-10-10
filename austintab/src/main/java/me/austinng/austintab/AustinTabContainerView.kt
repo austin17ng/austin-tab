@@ -5,6 +5,7 @@ import android.animation.Animator.AnimatorListener
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -12,7 +13,9 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import android.widget.Space
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.setPadding
 import androidx.viewpager2.widget.ViewPager2
 
@@ -66,17 +69,23 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
 
     internal lateinit var tabStyle: TabStyle
     internal lateinit var indicatorStyle: IndicatorStyle
-    internal lateinit var indicator: Drawable
+    internal lateinit var indicatorDrawable: Drawable
     internal var enableAnimation: Boolean = true
     internal var indicatorHeight: Int = 0
-    internal var tabPadding: Int = 0
+    internal var tabVerticalPadding: Int = 0
+    internal var tabHorizontalPadding: Int = 0
     internal var textColorActive: Int = 0
     internal var textColorInactive: Int = 0
     internal var textFontActive: Int? = null
     internal var textFontInactive: Int? = null
     internal var textSize: Float? = null
     internal var badgeTextSize: Float? = null
-    internal var badge: Drawable? = null
+    internal var badgeDrawable: Drawable? = null
+    internal var badgeFont: Int? = null
+    internal var badgeColor: Int? = null
+    internal var badgePosition: BadgePosition = BadgePosition.TOP
+    internal var iconActiveColor: Int? = null
+    internal var iconInactiveColor: Int? = null
     internal var onTabItemViewClicked: (tabItemView: TabItemView) -> Unit = {}
 
     internal fun setData(data: List<TabData>) {
@@ -138,11 +147,20 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
                 listTabItemView[index].tvName.typeface =
                     ResourcesCompat.getFont(context, textFontActive!!)
             }
+            val icon = listTabItemView[index].imgIcon.drawable
+            if (icon != null) {
+                DrawableCompat.setTint(DrawableCompat.wrap(icon),  iconActiveColor!!);
+            }
+
         } else {
             listTabItemView[index].tvName.setTextColor(textColorInactive)
             if (textFontInactive != null) {
                 listTabItemView[index].tvName.typeface =
                     ResourcesCompat.getFont(context, textFontInactive!!)
+            }
+            val icon = listTabItemView[index].imgIcon.drawable
+            if (icon != null) {
+                DrawableCompat.setTint(DrawableCompat.wrap(icon), iconInactiveColor!!);
             }
         }
     }
@@ -183,6 +201,14 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
     private fun initListTabItemView(data: List<TabData>): List<TabItemView> {
         val list = data.mapIndexed { index, it ->
             val tabItemView = TabItemView(context!!)
+            if (it.icon != null) {
+                tabItemView.imgIcon.setImageResource(it.icon)
+                DrawableCompat.setTint(
+                    DrawableCompat.wrap(tabItemView.imgIcon.getDrawable()),
+                    iconInactiveColor!!
+                )
+                tabItemView.imgIcon.visibility = VISIBLE
+            }
             tabItemView.tvNameFake.text = it.name
             if (textFontActive != null) {
                 tabItemView.tvNameFake.typeface = ResourcesCompat.getFont(context, textFontActive!!)
@@ -193,7 +219,32 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
             } else {
                 tabItemView.tvBadge.text = it.badge
                 tabItemView.tvBadge.visibility = VISIBLE
-                tabItemView.tvBadge.background = badge
+                tabItemView.tvBadge.background = badgeDrawable
+                if (badgeFont != null) {
+                    tabItemView.tvBadge.typeface = ResourcesCompat.getFont(context, badgeFont!!)
+                }
+                if (badgeColor != null) {
+                    tabItemView.tvBadge.setTextColor(badgeColor!!)
+                }
+            }
+            when (badgePosition) {
+                BadgePosition.TOP -> {
+                    val params = tabItemView.tvBadge.layoutParams as LayoutParams
+                    params.gravity = android.view.Gravity.TOP
+                    tabItemView.tvBadge.layoutParams = params
+                }
+
+                BadgePosition.CENTER -> {
+                    val params = tabItemView.tvBadge.layoutParams as LayoutParams
+                    params.gravity = android.view.Gravity.CENTER_VERTICAL
+                    tabItemView.tvBadge.layoutParams = params
+                }
+
+                BadgePosition.BOTTOM -> {
+                    val params = tabItemView.tvBadge.layoutParams as LayoutParams
+                    params.gravity = android.view.Gravity.BOTTOM
+                    tabItemView.tvBadge.layoutParams = params
+                }
             }
             tabItemView.layoutParams = when (tabStyle) {
                 TabStyle.ADAPTIVE -> {
@@ -218,7 +269,7 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
             if (badgeTextSize != null) {
                 tabItemView.tvBadge.setTextSize(TypedValue.COMPLEX_UNIT_PX, badgeTextSize!!)
             }
-            tabItemView.setPadding(tabPadding)
+            tabItemView.setPadding(tabHorizontalPadding, tabVerticalPadding, tabHorizontalPadding, tabVerticalPadding)
             tabItemView.setOnClickListener {
                 onTabClicked(index)
             }
@@ -260,7 +311,7 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
         val verticalPadding = paddingTop
         when (indicatorStyle) {
             IndicatorStyle.TAB -> {
-                indicator.setBounds(
+                indicatorDrawable.setBounds(
                     actualIndicatorBounds.left,
                     height - indicatorHeight - verticalPadding,
                     actualIndicatorBounds.right,
@@ -269,7 +320,7 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
             }
 
             IndicatorStyle.SEGMENTED_CONTROL -> {
-                indicator.setBounds(
+                indicatorDrawable.setBounds(
                     actualIndicatorBounds.left,
                     verticalPadding,
                     actualIndicatorBounds.right,
@@ -277,7 +328,7 @@ internal class AustinTabContainerView(context: Context?, attrs: AttributeSet?) :
                 )
             }
         }
-        indicator.draw(canvas)
+        indicatorDrawable.draw(canvas)
 
     }
 
