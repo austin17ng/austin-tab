@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AustinTabView">
+        <attr name="tab_container_background" format="reference"/>
+        <attr name="tab_container_padding" format="dimension"/>
+        <attr name="tab_style" format="enum">
+            <enum name="ADAPTIVE" value="0" />
+            <enum name="EQUAL" value="1" />
+        </attr>
+        <attr name="indicator_style" format="enum">
+            <enum name="TAB" value="0"/>
+            <enum name="SEGMENTED_CONTROL" value="1"/>
+        </attr>
+        <attr name="indicator_src" format="reference"/>
+        <attr name="indicator_height" format="dimension"/>
+        <attr name="offset" format="dimension"/>
+        <attr name="tab_padding" format="dimension"/>
+        <attr name="tab_text_color_active" format="color"/>
+        <attr name="tab_text_color_inactive" format="color"/>
+        <attr name="tab_text_font_active" format="reference"/>
+        <attr name="tab_text_font_inactive" format="reference"/>
+        <attr name="tab_text_size" format="dimension"/>
+        <attr name="android:textSize"/>
+    </declare-styleable>
+</resources>

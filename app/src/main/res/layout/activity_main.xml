@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="SHORT - ADAPTIVE - SEGMENTED" />
+
+    <me.austinng.austintab.AustinTabView
+        android:id="@+id/austinTabView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:indicator_src="@drawable/shape_indicator_segmented"
+        app:indicator_style="SEGMENTED_CONTROL"
+        app:offset="16dp"
+        app:tab_container_background="@drawable/shape_tab_background_segmented"
+        app:tab_container_padding="4dp"
+        app:tab_padding="6dp"
+        app:tab_style="ADAPTIVE"
+        app:tab_text_color_active="@color/white"
+        app:tab_text_color_inactive="@color/black"
+        app:tab_text_font_active="@font/ubuntu_medium"
+        app:tab_text_font_inactive="@font/ubuntu_regular"
+        app:tab_text_size="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="SHORT - ADAPTIVE - TAB" />
+
+    <me.austinng.austintab.AustinTabView
+        android:id="@+id/austinTabView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:indicator_height="2dp"
+        app:indicator_src="@drawable/shape_indicator_segmented"
+        app:indicator_style="TAB"
+        app:offset="16dp"
+        app:tab_container_padding="4dp"
+        app:tab_padding="6dp"
+        app:tab_style="ADAPTIVE"
+        app:tab_text_color_active="@color/black"
+        app:tab_text_color_inactive="@color/black"
+        app:tab_text_font_active="@font/ubuntu_medium"
+        app:tab_text_font_inactive="@font/ubuntu_regular"
+        app:tab_text_size="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="SHORT - EQUAL - SEGMENTED" />
+
+    <me.austinng.austintab.AustinTabView
+        android:id="@+id/austinTabView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:indicator_src="@drawable/shape_indicator_segmented"
+        app:indicator_style="SEGMENTED_CONTROL"
+        app:offset="16dp"
+        app:tab_container_background="@drawable/shape_tab_background_segmented"
+        app:tab_container_padding="4dp"
+        app:tab_padding="6dp"
+        app:tab_style="EQUAL"
+        app:tab_text_color_active="@color/white"
+        app:tab_text_color_inactive="@color/black"
+        app:tab_text_font_active="@font/ubuntu_medium"
+        app:tab_text_font_inactive="@font/ubuntu_regular"
+        app:tab_text_size="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="SHORT - EQUAL - TAB" />
+
+    <me.austinng.austintab.AustinTabView
+        android:id="@+id/austinTabView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:indicator_height="2dp"
+        app:indicator_src="@drawable/shape_indicator_segmented"
+        app:indicator_style="TAB"
+        app:offset="16dp"
+        app:tab_container_padding="4dp"
+        app:tab_padding="6dp"
+        app:tab_style="EQUAL"
+        app:tab_text_color_active="@color/black"
+        app:tab_text_color_inactive="@color/black"
+        app:tab_text_font_active="@font/ubuntu_medium"
+        app:tab_text_font_inactive="@font/ubuntu_regular"
+        app:tab_text_size="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="LONG_SEGMENTED" />
+
+    <me.austinng.austintab.AustinTabView
+        android:id="@+id/austinTabView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:indicator_src="@drawable/shape_indicator_segmented"
+        app:indicator_style="SEGMENTED_CONTROL"
+        app:offset="16dp"
+        app:tab_container_background="@drawable/shape_tab_background_segmented"
+        app:tab_container_padding="4dp"
+        app:tab_padding="6dp"
+        app:tab_text_color_active="@color/white"
+        app:tab_text_color_inactive="@color/black"
+        app:tab_text_font_active="@font/ubuntu_medium"
+        app:tab_text_font_inactive="@font/ubuntu_regular"
+        app:tab_text_size="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="LONG_TAB" />
+
+    <me.austinng.austintab.AustinTabView
+        android:id="@+id/austinTabView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:indicator_height="2dp"
+        app:indicator_src="@drawable/shape_indicator_segmented"
+        app:indicator_style="TAB"
+        app:offset="16dp"
+        app:tab_container_padding="4dp"
+        app:tab_padding="6dp"
+        app:tab_style="ADAPTIVE"
+        app:tab_text_color_active="@color/black"
+        app:tab_text_color_inactive="@color/black"
+        app:tab_text_font_active="@font/ubuntu_medium"
+        app:tab_text_font_inactive="@font/ubuntu_regular"
+        app:tab_text_size="14sp" />
+
+</LinearLayout>
