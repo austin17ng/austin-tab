@@ -49,7 +49,7 @@ austinTabView.setTabReselectedListener { index ->
     Log.d("AustinTabView", "Index $index reselected")
 }
 
-austinTabView1.setTabUnSelectedListener { index ->
+austinTabView.setTabUnSelectedListener { index ->
     Log.d("AustinTabView", "Index $index unselected")
 }
 ```
@@ -79,31 +79,31 @@ dependencies {
 
 ## List of attributes
 
-| Attributes  | Default value | Description |
-| ------------- |:-------------:|:-------------:|
-| `offset`    | `16dp`     | Space between the tab and screen edges   |
-| `enable_auto_scroll`     | `true`     | Automatically centers the selected tab on the screen.  |
-|   `enable_animation`   |   `false`  |   Enables tab translation animation  |
-|   `tab_container_background`   |     |    Background of the tab container |
-|     `tab_container_padding` |  `0dp`   |   Padding for the tab container  |
-|  `tab_style`    |  `ADAPTIVE`   | Tab style: `ADAPTIVE` or `EQUAL`    |
-|     `indicator_style` |   `TAB`  | Indicator style: `TAB` or `SEGMENTED_CONTROL`    |
-|    `indicator_src`  |     |    Drawable resource for the indicator|
-|`indicator_height`|`2dp`|Height of the indicator (only for `indicator_style = TAB`)|
-|`tab_vertical_padding`|`6dp`|Vertical padding for tabs|
-|`tab_horizontal_padding`|`16dp`|Horizontal padding for tabs|
-|`tab_text_color_active`|`white` (for `TAB`), `black` (for `SEGMENTED`)|Text color of the active tab|
-|`tab_text_color_inactive`|`black`|Text color of inactive tabs|
-|`tab_text_font_active`|`none`|Font for the active tab|
-|`tab_text_font_inactive`|`none`|Font for inactive tabs|
-|`tab_text_size`|`14sp`|Size of the tab text|
-|`tab_icon_active_color`|`white` (for `TAB`), `black` (for `SEGMENTED`)|Color for the active tab icon|
-|`tab_icon_inactive_color`|`black`|Color for the inactive tab icon|
-|`tab_badge_text_size`|`10sp`|Text size of the badge|
-|`tab_badge_font`|`none`|Font for the tab badge|
-|`tab_badge_source`||Drawable resource for the badge|
-|`tab_badge_color`|`white`|Text color of the badge|
-|`tab_badge_position`|`TOP`|Position of the badge: `TOP`, `CENTER`, or `BOTTOM`|
+| Attributes  |                                              Default value                                               | Description |
+| ------------- |:--------------------------------------------------------------------------------------------------------:|:-------------:|
+| `offset`    |                                                  `16dp`                                                  | Space between the tab and screen edges   |
+| `enable_auto_scroll`     |                                                  `true`                                                  | Automatically centers the selected tab on the screen.  |
+|   `enable_animation`   |                                                 `false`                                                  |   Enables tab translation animation  |
+|   `tab_container_background`   |        ![](/images/tab_bg.png "") (for `TAB`), ![](/images/segmented_bg.png "") (for `SEGMENTED`)        |    Background of the tab container |
+|     `tab_container_padding` |                                                  `0dp`                                                   |   Padding for the tab container  |
+|  `tab_style`    |                                                `ADAPTIVE`                                                | Tab style: `ADAPTIVE` or `EQUAL`    |
+|     `indicator_style` |                                                  `TAB`                                                   | Indicator style: `TAB` or `SEGMENTED_CONTROL`    |
+|    `indicator_src`  | ![](/images/tab_indicator.png "") (for `TAB`), ![](/images/segmented_indicator.png "") (for `SEGMENTED`) |    Drawable resource for the indicator|
+|`indicator_height`|                                                  `2dp`                                                   |Height of the indicator (only for `indicator_style = TAB`)|
+|`tab_vertical_padding`|                                                  `6dp`                                                   |Vertical padding for tabs|
+|`tab_horizontal_padding`|                                                  `16dp`                                                  |Horizontal padding for tabs|
+|`tab_text_color_active`|            ![](/images/white.png "") (for `TAB`), ![](/images/black.png "") (for `SEGMENTED`)            |Text color of the active tab|
+|`tab_text_color_inactive`|                                                 ![](/images/black.png "")                                                 |Text color of inactive tabs|
+|`tab_text_font_active`|                                                  `none`                                                  |Font for the active tab|
+|`tab_text_font_inactive`|                                                  `none`                                                  |Font for inactive tabs|
+|`tab_text_size`|                                                  `14sp`                                                  |Size of the tab text|
+|`tab_icon_active_color`|            ![](/images/white.png "") (for `TAB`), ![](/images/black.png "") (for `SEGMENTED`)            |Color for the active tab icon|
+|`tab_icon_inactive_color`|                                        ![](/images/black.png "")                                         |Color for the inactive tab icon|
+|`tab_badge_text_size`|                                                  `10sp`                                                  |Text size of the badge|
+|`tab_badge_font`|                                                  `none`                                                  |Font for the tab badge|
+|`tab_badge_source`|                                        ![](/images/badge.png "")                                         |Drawable resource for the badge|
+|`tab_badge_color`|                                        ![](/images/white.png "")                                         |Text color of the badge|
+|`tab_badge_position`|                                                  `TOP`                                                   |Position of the badge: `TOP`, `CENTER`, or `BOTTOM`|
 
 ## List of functions
 
