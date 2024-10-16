@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
 
         austinTabView1.setData(
             listOf(
-                TabData("Home", icon = R.drawable.ic_home),
-                TabData("Notifications", badge = "3"),
+                TabData("Home", icon = R.drawable.ic_home, badge = "3"),
+                TabData("A very longgggg text"),
                 TabData("Profile"),
             )
         )
@@ -56,8 +56,8 @@ class MainActivity : AppCompatActivity() {
 
         austinTabView2.setData(
             listOf(
-                TabData("Home", icon = R.drawable.ic_home),
-                TabData("Notifications", badge = "3"),
+                TabData("Home", icon = R.drawable.ic_home, badge = "3"),
+                TabData("A very longgggg text"),
                 TabData("Profile"),
             )
         )

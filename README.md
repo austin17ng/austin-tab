@@ -1,5 +1,5 @@
 # Austin Tab
-:sheep:  A light weight tab layout for Android :sheep:
+:sheep: An adaptive and lightweight tab layout for Android :sheep:
 
 <img src="/images/examples.png" alt="drawing" width="500"/>
 
