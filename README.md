@@ -1,6 +1,10 @@
 # Austin Tab
 :sheep: An adaptive and lightweight tab layout for Android :sheep:
 
+![Release](https://jitpack.io/v/austin17ng/austin-tab.svg)
+![Monthly download statistics](https://jitpack.io/v/austin17ng/austin-tab/month.svg)
+
+
 <img src="/images/examples.png" alt="drawing" width="500"/>
 
 ## Examples
