@@ -2,7 +2,6 @@ package me.austinng.austintab
 
 import android.content.Context
 import android.view.Gravity.CENTER
-import android.view.Gravity.CENTER_HORIZONTAL
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.LinearLayout
