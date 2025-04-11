@@ -129,6 +129,9 @@ dependencies {
 
 Feel free to contribute by submitting issues or pull requests. And please ensure that all pull requests are checked out from the `master` branch.
 
+## Related Projects  
+- [Austin Segmented Control](https://github.com/austin17ng/Austin_SegmentedControl) – 🐑 A segmented control (tabs) library for Jetpack Compose 🐑.
+
 ## License
 
 Austin Tab is licensed under the MIT License.
